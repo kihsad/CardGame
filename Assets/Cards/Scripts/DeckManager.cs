@@ -21,6 +21,12 @@ namespace Cards
         private Transform _deckPlayer2Parent;
 
         [Space, SerializeField]
+        private HandPlayer _handPlayer1;
+        [SerializeField]
+        private HandPlayer _handPlayer2;
+
+
+        [Space, SerializeField]
         private Card _prefabCard;
         [SerializeField]
         private CardPackConfiguration[] _packs;
@@ -58,6 +64,22 @@ namespace Cards
                 deck[i].Configuration(random, newMat, CardUtility.GetDescriptionById(random.Id));
             }
             return deck;
+        }
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                for(int i=_deckPlayer1.Length-1; i>=0; i--)
+                {
+                    if(_deckPlayer1[i]!=null)
+                    {
+                        _handPlayer1.SetNewCard(_deckPlayer1[i]);
+                        _deckPlayer1[i] = null;
+                        break;
+                    }
+                }
+            }
         }
 
     }
