@@ -9,7 +9,7 @@ namespace Cards
         private Card[] _cards;
 
         [SerializeField]
-        private Transform[] _positions;
+        public Transform[] _positions;
 
         private void Start()
         {

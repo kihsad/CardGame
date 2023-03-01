@@ -85,22 +85,46 @@ namespace Cards
             transform.eulerAngles = new Vector3(0f, 0f, 180f);
         }
 
+        public static Card _card;
+        private Vector3 _startPosition;
+        public Transform _startParent;
+        //private HandPlayer _parents;
+
+
+        //private void Awake()
+        //{
+        //    _parents = GetComponent<HandPlayer>();
+        //}
+
         public void OnBeginDrag(PointerEventData eventData)
         {
-            throw new System.NotImplementedException();
+            _card = this;
+            _startPosition = transform.position;
+            _startParent = transform.parent;
+            //_startParent = _parents._positions;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            throw new System.NotImplementedException();
+            _card = null;
+            if (_startParent == transform.parent)
+            {
+                transform.position = _startPosition;
+            }
+            else
+            {
+                transform.position = Vector3.zero;
+            }
             
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            throw new System.NotImplementedException();
-            //eventData.
-            //transform.position += eventData.;
+            //transform.localPosition = Input.mousePosition;
+
+            
+            transform.position = eventData.position;
+            
         }
     }
 }
