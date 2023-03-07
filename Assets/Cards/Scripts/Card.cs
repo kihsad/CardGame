@@ -120,10 +120,12 @@ namespace Cards
 
         public void OnDrag(PointerEventData eventData)
         {
+            Vector2 delta = eventData.delta;
+            Vector3 newPosition = transform.localPosition + new Vector3(delta.x, 0f, delta.y);
+            transform.localPosition = newPosition;
             //transform.localPosition = Input.mousePosition;
-
-            
-            transform.position = eventData.position;
+            //transform.position = eventData.pointerCurrentRaycast.screenPosition;
+            //transform.position = eventData.position + eventData.delta;
             
         }
     }
