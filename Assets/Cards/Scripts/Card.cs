@@ -30,6 +30,13 @@ namespace Cards
         [SerializeField]
         private TextMeshPro _typeText;
 
+        private DeckManager _deck;
+
+        private void Start()
+        {
+            _deck = GetComponent<DeckManager>();
+        }
+
         public int Health
         {
             get => _health;
@@ -87,7 +94,7 @@ namespace Cards
 
         public static Card _card;
         private Vector3 _startPosition;
-        public Transform _startParent;
+        public Vector3 _endPosition;
         //private HandPlayer _parents;
 
 
@@ -99,23 +106,14 @@ namespace Cards
         public void OnBeginDrag(PointerEventData eventData)
         {
             _card = this;
-            _startPosition = transform.position;
-            _startParent = transform.parent;
+            //_startPosition = transform.position;
             //_startParent = _parents._positions;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            _card = null;
-            if (_startParent == transform.parent)
-            {
-                transform.position = _startPosition;
-            }
-            else
-            {
-                transform.position = Vector3.zero;
-            }
-            
+            _deck._tablePlayer1.SetCard(_card);
+
         }
 
         public void OnDrag(PointerEventData eventData)
