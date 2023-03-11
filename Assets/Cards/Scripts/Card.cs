@@ -12,6 +12,9 @@ namespace Cards
         private static readonly Vector3 _stepPosition = new Vector3(0f, 5f, 0f);
         private const float _scale = 2f;
 
+        private Camera _mainCamera;
+        [HideInInspector] public Vector3 mousePosition;
+
         [SerializeField]
         private GameObject _frontCard;
         [SerializeField]
@@ -35,6 +38,7 @@ namespace Cards
         private void Start()
         {
             _deck = GetComponent<DeckManager>();
+            _mainCamera = Camera.main;
         }
 
         public int Health
@@ -105,15 +109,11 @@ namespace Cards
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            this.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
             _card = this;
-            //_startPosition = transform.position;
+            _startPosition = transform.position;
             //_startParent = _parents._positions;
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            _deck._tablePlayer1.SetCard(_card);
-
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -121,10 +121,45 @@ namespace Cards
             Vector2 delta = eventData.delta;
             Vector3 newPosition = transform.localPosition + new Vector3(delta.x, 0f, delta.y);
             transform.localPosition = newPosition;
+
             //transform.localPosition = Input.mousePosition;
             //transform.position = eventData.pointerCurrentRaycast.screenPosition;
             //transform.position = eventData.position + eventData.delta;
-            
+
         }
+
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            this.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            _endPosition = transform.position;
+            _deck._tablePlayer1.SetCard(_card);
+
+            Debug.Log("Card is attached to gizmo");
+
+        }
+
+        void Update()
+        {
+            Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit[] hits = Physics.RaycastAll(ray);
+
+            foreach (var hit in hits)
+            {
+                if (hit.collider.gameObject.layer != LayerMask.NameToLayer("Old Table")) continue;
+                Debug.DrawLine(start: ray.origin, end: ray.origin + ray.direction * 100, Color.red);
+
+                mousePosition = _mainCamera.ScreenToWorldPoint(new Vector3());
+                
+                mousePosition = hit.point;
+
+
+                break;
+            }
+
+        }
+
+       
+        
     }
 }
