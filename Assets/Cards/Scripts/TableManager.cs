@@ -6,7 +6,7 @@ namespace Cards
 {
     public class TableManager : MonoBehaviour
     {
-        private Card[] _cards;
+        private List<Card> _cards = new List<Card>();
 
         [SerializeField]
         public Transform[] _positions;
@@ -14,7 +14,7 @@ namespace Cards
         public bool SetCard(Card card)
         {
             var index = -1;
-            for(int i=0; i<_cards.Length; i++)
+            for(int i=0; i<_cards.Count; i++)
             {
                 if(_cards[i] == null)
                 {

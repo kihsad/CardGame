@@ -34,7 +34,7 @@ namespace Cards
 
         private void Start()
         {
-            _deck = GetComponent<DeckManager>();
+            _deck = FindObjectOfType<DeckManager>();
         }
 
         public int Health
