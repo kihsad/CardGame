@@ -13,23 +13,28 @@ namespace Cards
 
         public bool SetCard(Card card)
         {
-            var index = -1;
-            for(int i=0; i<_cards.Count; i++)
-            {
-                if(_cards[i] == null)
-                {
-                    index = i;
-                    break;
-                }
-            }
-            if (index == -1)
-            {
-                Destroy(card.gameObject);
-                return false;
-            }
+            //var index = -1;
+            //for(int i=0; i<_cards.Count; i++)
+            //{
+            //    if(_cards[i] == null)
+            //    {
+            //        index = i;
+            //        break;
+            //    }
+            //}
+            //if (index == -1)
+            //{
+            //    Destroy(card.gameObject);
+            //    return false;
+            //}
 
-            _cards[index] = card;
-            StartCoroutine(MoveOnTable(card, _positions[index]));
+            //var index = -1;
+            for (int i = 0; i < _cards.Count; i++)
+            {
+                _cards[i] = card;
+                StartCoroutine(MoveOnTable(card, _positions[i]));
+
+            }
 
             return true;
         }
