@@ -27,4 +27,5 @@ namespace Cards
 		OnTable,
 		Discard
     }
+
 }

@@ -6,37 +6,21 @@ namespace Cards
 {
     public class TableManager : MonoBehaviour
     {
-        private List<Card> _cards = new List<Card>();
-
         [SerializeField]
         public Transform[] _positions;
+        private Card[] _cards;
 
         public bool SetCard(Card card)
         {
-            //var index = -1;
-            //for(int i=0; i<_cards.Count; i++)
-            //{
-            //    if(_cards[i] == null)
-            //    {
-            //        index = i;
-            //        break;
-            //    }
-            //}
-            //if (index == -1)
-            //{
-            //    Destroy(card.gameObject);
-            //    return false;
-            //}
-
-            //var index = -1;
-            for (int i = 0; i < _cards.Count; i++)
+            for (int i = 0; i < _cards.Length; i++)
             {
                 _cards[i] = card;
                 StartCoroutine(MoveOnTable(card, _positions[i]));
+                return true;
 
             }
 
-            return true;
+            return false;
         }
 
         private IEnumerator MoveOnTable(Card card, Transform position)
@@ -50,7 +34,6 @@ namespace Cards
                 time += Time.deltaTime;
                 yield return null;
             }
-            //card.SwitchCard();
             card.State = CardStateType.OnTable;
         }
     }

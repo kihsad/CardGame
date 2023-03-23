@@ -62,7 +62,7 @@ namespace Cards
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            switch(State)
+            switch (State)
             {
                 case CardStateType.InHand:
                     transform.localPosition += _stepPosition;
@@ -124,7 +124,7 @@ namespace Cards
             //transform.localPosition = Input.mousePosition;
             //transform.position = eventData.pointerCurrentRaycast.screenPosition;
             //transform.position = eventData.position + eventData.delta;
-            
+
         }
     }
 }
