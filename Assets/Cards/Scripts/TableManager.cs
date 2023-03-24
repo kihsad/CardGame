@@ -10,13 +10,22 @@ namespace Cards
         public Transform[] _positions;
         private Card[] _cards;
 
-        public bool SetCard(Card card)
+        private void Awake()
+        {
+            _cards = new Card[_positions.Length];
+        }
+
+        public bool TrySetCard(Card card)
         {
             for (int i = 0; i < _cards.Length; i++)
             {
-                _cards[i] = card;
-                StartCoroutine(MoveOnTable(card, _positions[i]));
-                return true;
+                if (_cards[i] = null)
+                {
+                    _cards[i] = card;
+                    StartCoroutine(MoveOnTable(card, _positions[i]));
+                    return true;
+                }
+                
 
             }
 

@@ -112,7 +112,7 @@ namespace Cards
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            _deck._tablePlayer1.SetCard(_card);
+            _deck._tablePlayer1.TrySetCard(_card);
 
         }
 
