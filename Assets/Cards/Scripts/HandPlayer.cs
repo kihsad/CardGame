@@ -51,6 +51,9 @@ namespace Cards
             }
             card.SwitchCard();
             card.State = CardStateType.InHand;
+            card.PositionInHand = endPos;
+           
+
         }
     }
 }

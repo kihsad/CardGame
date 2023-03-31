@@ -22,7 +22,8 @@ namespace Cards
                 if (_cards[i] = null)
                 {
                     _cards[i] = card;
-                    StartCoroutine(MoveOnTable(card, _positions[i]));
+                    StartCoroutine(MoveCard(card, _positions[i]));
+                    card.State = CardStateType.OnTable;
                     return true;
                 }
                 
@@ -32,7 +33,7 @@ namespace Cards
             return false;
         }
 
-        private IEnumerator MoveOnTable(Card card, Transform position)
+        private IEnumerator MoveCard(Card card, Transform position)
         {
             var time = 0f;
             var startPos = card.transform.position;
@@ -43,7 +44,8 @@ namespace Cards
                 time += Time.deltaTime;
                 yield return null;
             }
-            card.State = CardStateType.OnTable;
+            
+            
         }
     }
 }

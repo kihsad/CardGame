@@ -28,4 +28,10 @@ namespace Cards
 		Discard
     }
 
+	public enum PlayerType: byte
+    {
+		Player1,
+		Player2
+    }
+
 }

@@ -31,10 +31,21 @@ namespace Cards
         private TextMeshPro _typeText;
 
         private DeckManager _deck;
+        private HandPlayer _hand;
+
+        public static Card _card;
+        private float _distance;
+        [SerializeField]
+        private Collider[] _positions;
+
+        public Vector3 PositionInHand { get; set; }
+        [SerializeField]
+        private LayerMask _tablePointLayer;
 
         private void Start()
         {
             _deck = FindObjectOfType<DeckManager>();
+            _hand = FindObjectOfType<HandPlayer>();
         }
 
         public int Health
@@ -92,28 +103,40 @@ namespace Cards
             transform.eulerAngles = new Vector3(0f, 0f, 180f);
         }
 
-        public static Card _card;
-        private Vector3 _startPosition;
-        public Vector3 _endPosition;
-        //private HandPlayer _parents;
-
-
-        //private void Awake()
-        //{
-        //    _parents = GetComponent<HandPlayer>();
-        //}
+        public void MoveToClosestPosition()
+        {
+            for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, _distance, _positions); i++)
+            {
+                var _closest = _positions[0].ClosestPoint(transform.position);
+                _distance = Vector3.Distance(_card.transform.position, _positions[0].ClosestPoint(transform.position));
+                _card.transform.Translate(_closest);
+            }
+        }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             _card = this;
-            //_startPosition = transform.position;
-            //_startParent = _parents._positions;
         }
+        
+
+
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            _deck._tablePlayer1.TrySetCard(_card);
+            //MoveToClosestPosition();
+            for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 100, _positions); i++)
+            {
+                Debug.Log(_positions[i]);
+                if (_positions[i].TryGetComponent(out DrawCard cardPoint) && cardPoint.IsEmpty == false)
+                {
+                    transform.position = cardPoint.transform.position + Vector3.up * 5;
+                    
+                }
 
+            }
+
+            transform.position = PositionInHand;
+            //_deck._tablePlayer1.TrySetCard(_card);
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -121,10 +144,14 @@ namespace Cards
             Vector2 delta = eventData.delta;
             Vector3 newPosition = transform.localPosition + new Vector3(delta.x, 0f, delta.y);
             transform.localPosition = newPosition;
-            //transform.localPosition = Input.mousePosition;
-            //transform.position = eventData.pointerCurrentRaycast.screenPosition;
-            //transform.position = eventData.position + eventData.delta;
-
         }
+
+        //private void OnDrawGizmos()
+        //{
+           
+        //        Gizmos.color = Color.red;
+        //        Gizmos.DrawSphere(transform.position, 100);
+          
+        //}
     }
 }
