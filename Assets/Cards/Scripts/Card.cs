@@ -103,15 +103,15 @@ namespace Cards
             transform.eulerAngles = new Vector3(0f, 0f, 180f);
         }
 
-        public void MoveToClosestPosition()
-        {
-            for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, _distance, _positions); i++)
-            {
-                var _closest = _positions[0].ClosestPoint(transform.position);
-                _distance = Vector3.Distance(_card.transform.position, _positions[0].ClosestPoint(transform.position));
-                _card.transform.Translate(_closest);
-            }
-        }
+        //public void MoveToClosestPosition()
+        //{
+        //    for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, _distance, _positions); i++)
+        //    {
+        //        var _closest = _positions[0].ClosestPoint(transform.position);
+        //        _distance = Vector3.Distance(_card.transform.position, _positions[0].ClosestPoint(transform.position));
+        //        _card.transform.Translate(_closest);
+        //    }
+        //}
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -127,10 +127,12 @@ namespace Cards
             for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 100, _positions); i++)
             {
                 Debug.Log(_positions[i]);
-                if (_positions[i].TryGetComponent(out DrawCard cardPoint) && cardPoint.IsEmpty == false)
+                if (_positions[i].TryGetComponent(out DrawCard cardPoint) && cardPoint.IsEmpty)
                 {
-                    transform.position = cardPoint.transform.position + Vector3.up * 5;
-                    
+                    transform.position = cardPoint.transform.position + Vector3.up;
+                    //StartCoroutine(_hand.MoveInHand(_card, _positions[i].transform));
+                    cardPoint.IsEmpty = false;
+                    return;
                 }
 
             }
@@ -146,12 +148,12 @@ namespace Cards
             transform.localPosition = newPosition;
         }
 
-        //private void OnDrawGizmos()
-        //{
-           
-        //        Gizmos.color = Color.red;
-        //        Gizmos.DrawSphere(transform.position, 100);
-          
-        //}
+        private void OnDrawGizmos()
+        {
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(transform.position, 100);
+
+        }
     }
 }

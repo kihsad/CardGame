@@ -38,7 +38,7 @@ namespace Cards
 
             return true;
         }
-        private IEnumerator MoveInHand(Card card, Transform position)
+        public IEnumerator MoveInHand(Card card, Transform position)
         {
             var time = 0f;
             var startPos = card.transform.position;

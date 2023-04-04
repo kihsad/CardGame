@@ -25,11 +25,6 @@ namespace Cards
         [SerializeField]
         private HandPlayer _handPlayer2;
 
-        [Space, SerializeField]
-        public TableManager _tablePlayer1;
-        [SerializeField]
-        public TableManager _tablePlayer2;
-
 
         [Space, SerializeField]
         private Card _prefabCard;
