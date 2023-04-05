@@ -724,7 +724,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 377575356}
-  - component: {fileID: 377575357}
   m_Layer: 0
   m_Name: TablePlayer1
   m_TagString: Untagged
@@ -753,26 +752,6 @@ Transform:
   m_Father: {fileID: 1257099388}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &377575357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 377575355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522e93e2dce4f4b4ab4a4ce7e07d5dd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _positions:
-  - {fileID: 493908263}
-  - {fileID: 1569346246}
-  - {fileID: 319017019}
-  - {fileID: 374556497}
-  - {fileID: 254904660}
-  - {fileID: 1586375098}
-  - {fileID: 1305193265}
 --- !u!1 &389628818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1153,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 572693030}
-  - component: {fileID: 572693031}
   m_Layer: 0
   m_Name: TablePlayer2
   m_TagString: Untagged
@@ -1203,26 +1181,6 @@ Transform:
   m_Father: {fileID: 1257099388}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &572693031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572693029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522e93e2dce4f4b4ab4a4ce7e07d5dd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _positions:
-  - {fileID: 1589376030}
-  - {fileID: 1377002532}
-  - {fileID: 1355131808}
-  - {fileID: 1340660538}
-  - {fileID: 1408155581}
-  - {fileID: 1699362562}
-  - {fileID: 992528704}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

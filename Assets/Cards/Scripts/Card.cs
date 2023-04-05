@@ -36,7 +36,7 @@ namespace Cards
         public static Card _card;
         private float _distance;
         [SerializeField]
-        private Collider[] _positions;
+        private Collider[] _tablePositions = new Collider[10];
 
         public Vector3 PositionInHand { get; set; }
         [SerializeField]
@@ -124,12 +124,12 @@ namespace Cards
         public void OnEndDrag(PointerEventData eventData)
         {
             //MoveToClosestPosition();
-            for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 100, _positions); i++)
+            for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 100, _tablePositions); i++)
             {
-                Debug.Log(_positions[i]);
-                if (_positions[i].TryGetComponent(out DrawCard cardPoint) && cardPoint.IsEmpty)
+                Debug.Log(_tablePositions[i]);
+                if (_tablePositions[i].TryGetComponent(out DrawCard cardPoint) && cardPoint.IsEmpty)
                 {
-                    transform.position = cardPoint.transform.position + Vector3.up;
+                    transform.position = cardPoint.transform.position + Vector3.up * 5;
                     //StartCoroutine(_hand.MoveInHand(_card, _positions[i].transform));
                     cardPoint.IsEmpty = false;
                     return;
