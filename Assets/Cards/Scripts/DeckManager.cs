@@ -8,7 +8,6 @@ namespace Cards
     public class DeckManager : MonoBehaviour
     {
         private Material _baseMat;
-        private List<CardPropertiesData> _allCards;
 
         private Card[] _deckPlayer1;
         private Card[] _deckPlayer2;
@@ -31,13 +30,19 @@ namespace Cards
         [SerializeField]
         private CardPackConfiguration[] _packs;
 
+        [Space, SerializeField]
+        private ScriptableObject[] _allCardsPlayer1;
+        [SerializeField]
+        private ScriptableObject[] _allCardsPlayer2;
+
+
         private void Awake()
         {
             IEnumerable<CardPropertiesData> cards = new List<CardPropertiesData>();
 
             foreach (var pack in _packs) cards = pack.UnionProperties(cards);
 
-            _allCards = new List<CardPropertiesData>(cards);
+            //_allCards = new List<CardPropertiesData>(cards);
 
             _baseMat = new Material(Shader.Find("TextMeshPro/Sprite"));
             _baseMat.renderQueue = 2995;
@@ -58,10 +63,10 @@ namespace Cards
                 deck[i].transform.localPosition = offset;
                 offset += new Vector3(0f, 1f, 0f);
 
-                var random = _allCards[Random.Range(0, _allCards.Count)];
+                //var random = _allCards[Random.Range(0, _allCards.Count)];
                 var newMat = new Material(_baseMat);
-                newMat.mainTexture = random.Texture;
-                deck[i].Configuration(random, newMat, CardUtility.GetDescriptionById(random.Id));
+                //newMat.mainTexture = random.Texture;
+                //deck[i].Configuration(random, newMat, CardUtility.GetDescriptionById(random.Id));
             }
             return deck;
         }
