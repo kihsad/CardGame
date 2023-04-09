@@ -31,9 +31,9 @@ namespace Cards
         private CardPackConfiguration[] _packs;
 
         [Space, SerializeField]
-        private ScriptableObject[] _allCardsPlayer1;
+        private CardConfiguration[] _allCardsPlayer1;
         [SerializeField]
-        private ScriptableObject[] _allCardsPlayer2;
+        private CardConfiguration[] _allCardsPlayer2;
 
 
         private void Awake()
@@ -49,11 +49,11 @@ namespace Cards
         }
         private void Start()
         {
-            _deckPlayer1 = CreateDeck(_deckPlayer1Parent);
-            _deckPlayer2 = CreateDeck(_deckPlayer2Parent);
+            _deckPlayer1 = CreateDeck(_deckPlayer1Parent, _allCardsPlayer1);
+            _deckPlayer2 = CreateDeck(_deckPlayer2Parent, _allCardsPlayer2);
         }
 
-        private Card[] CreateDeck(Transform parent)
+        private Card[] CreateDeck(Transform parent, CardConfiguration[] allCards)
         {
             var deck = new Card[_maxCardInDeck];
             var offset = new Vector3();
@@ -63,10 +63,10 @@ namespace Cards
                 deck[i].transform.localPosition = offset;
                 offset += new Vector3(0f, 1f, 0f);
 
-                //var random = _allCards[Random.Range(0, _allCards.Count)];
+                var random = allCards[Random.Range(0, allCards.Length)];
                 var newMat = new Material(_baseMat);
-                //newMat.mainTexture = random.Texture;
-                //deck[i].Configuration(random, newMat, CardUtility.GetDescriptionById(random.Id));
+                newMat.mainTexture = random._texture;
+                deck[i].Configuration(random, newMat, CardUtility.GetDescriptionById((uint)random._id));
             }
             return deck;
         }

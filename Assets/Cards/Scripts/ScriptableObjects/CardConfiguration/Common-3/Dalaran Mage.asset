@@ -19,4 +19,4 @@ MonoBehaviour:
   _attack: 1
   _health: 4
   _type: 0
-  _description: 
+  _description: Damage +1

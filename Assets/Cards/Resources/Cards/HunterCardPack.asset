@@ -26,4 +26,4 @@ MonoBehaviour:
     Texture: {fileID: 2800000, guid: ba98a4423b7983d48ba754099432693f, type: 3}
     Attack: 7
     Health: 9
-    Type: 0
+    Type: 2

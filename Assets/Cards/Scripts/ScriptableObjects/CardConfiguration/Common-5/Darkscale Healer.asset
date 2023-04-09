@@ -19,4 +19,4 @@ MonoBehaviour:
   _attack: 4
   _health: 5
   _type: 0
-  _description: 
+  _description: Restore 2 Health to all friendly characters

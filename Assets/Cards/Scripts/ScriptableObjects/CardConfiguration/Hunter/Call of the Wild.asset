@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f98a39b20b02adc4a9c8e91e1d802263, type: 3}
-  m_Name: Kobold Geomancer
+  m_Name: Call of the Wild
   m_EditorClassIdentifier: 
-  _cost: 2
-  _id: 205
-  _name: Kobold Geomancer
-  _texture: {fileID: 2800000, guid: d7204d09017145c489fe388e29dc767d, type: 3}
-  _attack: 2
-  _health: 2
-  _type: 0
-  _description: Damage +1
+  _cost: 10
+  _id: 1002
+  _name: Call of the Wild
+  _texture: {fileID: 2800000, guid: ba98a4423b7983d48ba754099432693f, type: 3}
+  _attack: 7
+  _health: 9
+  _type: 2
+  _description: 

@@ -19,4 +19,4 @@ MonoBehaviour:
   _attack: 2
   _health: 7
   _type: 0
-  _description: 
+  _description: Whenever this minion takes damage, gain +3 Attack

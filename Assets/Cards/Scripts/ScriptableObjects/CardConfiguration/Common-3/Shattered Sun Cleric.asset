@@ -19,4 +19,4 @@ MonoBehaviour:
   _attack: 3
   _health: 2
   _type: 0
-  _description: 
+  _description: Give a friendly miniom +1/+1

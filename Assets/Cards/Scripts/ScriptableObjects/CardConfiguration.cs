@@ -8,21 +8,21 @@ namespace Cards.ScriptableObjects
     public class CardConfiguration : ScriptableObject
     {
         [SerializeField]
-        private int _cost;
+        public int _cost;
         [SerializeField]
-        private int _id;
+        public int _id;
         [SerializeField]
-        private string _name;
+        public string _name;
         [SerializeField]
-        private Texture _texture;
+        public Texture _texture;
         [SerializeField]
-        private int _attack;
+        public int _attack;
         [SerializeField]
-        private int _health;
+        public int _health;
         [SerializeField]
-        private CardUnitType _type;
+        public CardUnitType _type;
         [SerializeField]
-        private string _description;
+        public string _description;
 
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using Cards.ScriptableObjects;
+using System;
 
 namespace Cards
 {
@@ -69,6 +71,17 @@ namespace Cards
             _healthText.text = (_health = data.Health).ToString();
             _typeText.text = data.Type == CardUnitType.None ? string.Empty : data.Type.ToString();
 
+        }
+
+        internal void Configuration(CardConfiguration configuration, Material mat, string description)
+        {
+            _mesh.sharedMaterial = mat;
+            _costText.text = configuration._cost.ToString();
+            _nameText.text = configuration._name;
+            _descriptionText.text = description;
+            _attackText.text = configuration._attack.ToString();
+            _healthText.text = (_health = configuration._health).ToString();
+            _typeText.text = configuration._type == CardUnitType.None ? string.Empty : configuration._type.ToString();
         }
 
         public void OnPointerEnter(PointerEventData eventData)

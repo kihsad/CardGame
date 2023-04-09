@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f98a39b20b02adc4a9c8e91e1d802263, type: 3}
-  m_Name: Kobold Geomancer
+  m_Name: Servant of Yogg-Saron
   m_EditorClassIdentifier: 
-  _cost: 2
-  _id: 205
-  _name: Kobold Geomancer
-  _texture: {fileID: 2800000, guid: d7204d09017145c489fe388e29dc767d, type: 3}
-  _attack: 2
-  _health: 2
+  _cost: 4
+  _id: 802
+  _name: Servant of Yogg-Saron
+  _texture: {fileID: 2800000, guid: f57bf00968c719e409ce3a1fc2579067, type: 3}
+  _attack: 5
+  _health: 4
   _type: 0
-  _description: Damage +1
+  _description: 

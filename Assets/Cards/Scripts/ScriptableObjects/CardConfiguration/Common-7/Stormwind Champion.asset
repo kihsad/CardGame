@@ -19,4 +19,4 @@ MonoBehaviour:
   _attack: 6
   _health: 6
   _type: 0
-  _description: 
+  _description: Your other minions have +1/+1

@@ -165,38 +165,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3229ff84acff46246a9bd0591a1ab7f6, type: 2}
   - {fileID: 11400000, guid: cb7286cd1080bf04cbbf4a2265e52f38, type: 2}
   - {fileID: 11400000, guid: 93d377064370f4443970eeb9769fd723, type: 2}
+  - {fileID: 11400000, guid: 07bee64bda995f346ab64be9116a1eeb, type: 2}
+  - {fileID: 11400000, guid: c610a737b20abda4fa3e2db681a76150, type: 2}
+  - {fileID: 11400000, guid: f5db4194713dc914382c0edd6b5a2668, type: 2}
+  - {fileID: 11400000, guid: 52865d9b1cf92e141bff3c15d67f0efd, type: 2}
   _allCardsPlayer1:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _allCardsPlayer2: []
+  - {fileID: 11400000, guid: 76ed60c4a697daf479706fe19f03d650, type: 2}
+  - {fileID: 11400000, guid: 07d4425f5e8bbdb4bb124869859aa203, type: 2}
+  - {fileID: 11400000, guid: ae07ca31578e600479be4129654609f7, type: 2}
+  - {fileID: 11400000, guid: 044b103292e7e9846a7d7a5874a08643, type: 2}
+  - {fileID: 11400000, guid: b24f708477b12b044bb8cb192065f826, type: 2}
+  _allCardsPlayer2:
+  - {fileID: 11400000, guid: 39e889bab28416d4cb0c812d8b5abc34, type: 2}
+  - {fileID: 11400000, guid: 4239a3dc4bc0e9a449cc95adca681c98, type: 2}
+  - {fileID: 11400000, guid: 8aeb4f186275ab9499ad5b8b16597996, type: 2}
+  - {fileID: 11400000, guid: bf964c1ec999c35479aa394f65a57fd1, type: 2}
+  - {fileID: 11400000, guid: 37f376f2deb3c1b42b8c1a9c0d80e33a, type: 2}
 --- !u!4 &47185537
 Transform:
   m_ObjectHideFlags: 0
