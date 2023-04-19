@@ -59,4 +59,12 @@ namespace Cards
 			Cost = cost; Attack = attack; Health = health;
 		}
 	}
+	[Serializable]
+	public struct Stat
+    {
+		public StatType Type;
+		public float Value;
+    }
+
+
 }

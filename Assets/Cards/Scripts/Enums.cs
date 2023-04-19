@@ -30,6 +30,12 @@ namespace Cards
 		Discard
     }
 
+	public enum StatType : byte
+    {
+		Restore,
+		SimpleDamage
+    }
+
 	public enum PlayerType: byte
     {
 		Player1,
