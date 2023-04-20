@@ -63,7 +63,7 @@ namespace Cards
 	public struct Stat
     {
 		public StatType Type;
-		public float Value;
+		public int Value;
     }
 
 

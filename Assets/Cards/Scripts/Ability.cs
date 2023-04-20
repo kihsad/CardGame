@@ -3,9 +3,10 @@ namespace Cards
 {
     public abstract class Ability
     {
-        public abstract void Apply();
+        protected Card _source, _target;
+
+        public abstract void Apply(Card source, Card target, AbilityData data);
         public abstract void Cancel();
-        public abstract void SetData(AbilityData data, Card card);
 
     }
 

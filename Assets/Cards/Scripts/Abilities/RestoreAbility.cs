@@ -7,26 +7,17 @@ using UnityEngine;
 public class RestoreAbility : Ability
 {
     private Stat _restore;
-    private Card _card;
 
-    public RestoreAbility()
+    public override void Apply(Card source, Card target, AbilityData data)
     {
-
-    }
-    public override void Apply()
-    {
-        //_card.Health
+        data.TryGetStat(StatType.RestoreHealth, out _restore);
+        _source = source;
+        _source.Health += _restore.Value;
     }
 
     public override void Cancel()
     {
-        throw new System.NotImplementedException();
+        _source.Health -= _restore.Value;
     }
 
-    public override void SetData(AbilityData data, Card card)
-    {
-        data.TryGetStat(StatType.Restore, out _restore);
-        _card = card;
-
-    }
 }

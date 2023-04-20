@@ -11,7 +11,6 @@ namespace Cards
     public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         private int _health;
-        public int Health { get; set; }
         private static readonly Vector3 _stepPosition = new Vector3(0f, 5f, 0f);
         private const float _scale = 2f;
 
