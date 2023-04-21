@@ -11,6 +11,7 @@ namespace Cards
     public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         private int _health;
+        public int _attack;
         private static readonly Vector3 _stepPosition = new Vector3(0f, 5f, 0f);
         private const float _scale = 2f;
 
@@ -59,6 +60,15 @@ namespace Cards
                 _healthText.text = _health.ToString();
             }
         }
+        //public int Attack
+        //{
+        //    get => _attack;
+        //    set
+        //    {
+        //        _attack = value;
+        //        _attackText.text = _attack.ToString();
+        //    }
+        //}
         public CardStateType State { get; set; } = CardStateType.InDeck;
 
         public void Configuration(CardPropertiesData data, Material mat, string description)
