@@ -1,17 +1,18 @@
-﻿using Cards;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class DealDamageAbility : Ability
+﻿namespace Cards
 {
-    public override void Apply(Card source, Card target, AbilityData data)
+    public class DealDamageAbility : Ability
     {
-        throw new System.NotImplementedException();
-    }
+        private Stat _dealDamage;
+        public override void Apply(Card source, Card target, AbilityData data)
+        {
+            data.TryGetStat(StatType.DealDamage, out _dealDamage);
+            _target = target;
+            _target.Health -= _dealDamage.Value;
+        }
 
-    public override void Cancel()
-    {
-        throw new System.NotImplementedException();
+        public override void Cancel()
+        {
+            _target.Health += _dealDamage.Value;
+        }
     }
 }

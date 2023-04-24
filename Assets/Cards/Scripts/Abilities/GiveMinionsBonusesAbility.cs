@@ -1,6 +1,6 @@
 ﻿namespace Cards
 {
-    public class DrawCardAbility : Ability
+    public class GiveMinionsBonusesAbility : Ability
     {
         public override void Apply(Card source, Card target, AbilityData data)
         {
@@ -11,5 +11,6 @@
         {
             throw new System.NotImplementedException();
         }
+
     }
 }

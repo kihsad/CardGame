@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 using Cards.ScriptableObjects;
-using System;
 
 namespace Cards
 {
     public class Card : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
-        private int _health;
+        public int _health;
         public int _attack;
         private static readonly Vector3 _stepPosition = new Vector3(0f, 5f, 0f);
         private const float _scale = 2f;
@@ -31,7 +28,7 @@ namespace Cards
         [SerializeField]
         private TextMeshPro _healthText;
         [SerializeField]
-        private TextMeshPro _typeText;
+        public TextMeshPro _typeText;
 
         private DeckManager _deck;
         private HandPlayer _hand;
@@ -60,15 +57,7 @@ namespace Cards
                 _healthText.text = _health.ToString();
             }
         }
-        //public int Attack
-        //{
-        //    get => _attack;
-        //    set
-        //    {
-        //        _attack = value;
-        //        _attackText.text = _attack.ToString();
-        //    }
-        //}
+       
         public CardStateType State { get; set; } = CardStateType.InDeck;
 
         public void Configuration(CardPropertiesData data, Material mat, string description)
@@ -80,7 +69,6 @@ namespace Cards
             _attackText.text = data.Attack.ToString();
             _healthText.text = (_health = data.Health).ToString();
             _typeText.text = data.Type == CardUnitType.None ? string.Empty : data.Type.ToString();
-
         }
 
         internal void Configuration(CardConfiguration configuration, Material mat, string description)
@@ -140,28 +128,20 @@ namespace Cards
         {
             _card = this;
         }
-        
-
-
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            //MoveToClosestPosition();
             for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 100, _tablePositions); i++)
             {
                 Debug.Log(_tablePositions[i]);
                 if (_tablePositions[i].TryGetComponent(out DrawCard cardPoint) && cardPoint.IsEmpty)
                 {
                     transform.position = cardPoint.transform.position + Vector3.up * 5;
-                    //StartCoroutine(_hand.MoveInHand(_card, _positions[i].transform));
                     cardPoint.IsEmpty = false;
                     return;
                 }
-
             }
-
             transform.position = PositionInHand;
-            //_deck._tablePlayer1.TrySetCard(_card);
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -170,10 +150,8 @@ namespace Cards
             Vector3 newPosition = transform.localPosition + new Vector3(delta.x, 0f, delta.y);
             transform.localPosition = newPosition;
         }
-
         private void OnDrawGizmos()
         {
-
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(transform.position, 100);
 

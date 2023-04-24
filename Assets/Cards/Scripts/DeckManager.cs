@@ -42,8 +42,6 @@ namespace Cards
 
             foreach (var pack in _packs) cards = pack.UnionProperties(cards);
 
-            //_allCards = new List<CardPropertiesData>(cards);
-
             _baseMat = new Material(Shader.Find("TextMeshPro/Sprite"));
             _baseMat.renderQueue = 2995;
         }

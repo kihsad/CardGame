@@ -1,18 +1,22 @@
-﻿using Cards;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MurlocBonusAttackAbility : Ability
+﻿namespace Cards
 {
-    public override void Apply(Card source, Card target, AbilityData data)
+    public class MurlocBonusAttackAbility : Ability
     {
-        throw new System.NotImplementedException();
-    }
+        private Stat _murlocAttack;
+        public override void Apply(Card source, Card target, AbilityData data)
+        {
+            data.TryGetStat(StatType.MurlocHaveBonusAttack, out _murlocAttack);
+            _target = target;
+            if (_target._typeText.Equals(CardUnitType.Murloc))
+            {
+                _target._attack += _murlocAttack.Value;
+            }
+        }
 
-    public override void Cancel()
-    {
-        throw new System.NotImplementedException();
-    }
+        public override void Cancel()
+        {
+            _target._attack -= _murlocAttack.Value;
+        }
 
+    }
 }

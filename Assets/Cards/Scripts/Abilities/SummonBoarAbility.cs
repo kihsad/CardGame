@@ -1,6 +1,6 @@
 ﻿namespace Cards
 {
-    public class DrawCardAbility : Ability
+    public class SummonBoarAbility : Ability
     {
         public override void Apply(Card source, Card target, AbilityData data)
         {

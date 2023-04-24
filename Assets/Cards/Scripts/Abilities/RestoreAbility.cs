@@ -1,21 +1,20 @@
-﻿using Cards;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-public class RestoreAbility : Ability
+﻿namespace Cards
 {
-    private Stat _restore;
-
-    public override void Apply(Card source, Card target, AbilityData data)
+    public class RestoreAbility : Ability
     {
-        data.TryGetStat(StatType.RestoreHealth, out _restore);
-        _source = source;
-        _source.Health += _restore.Value;
-    }
+        private Stat _restore;
 
-    public override void Cancel()
-    {
-        _source.Health -= _restore.Value;
-    }
+        public override void Apply(Card source, Card target, AbilityData data)
+        {
+            data.TryGetStat(StatType.RestoreHealth, out _restore);
+            _source = source;
+            _source.Health += _restore.Value;
+        }
 
+        public override void Cancel()
+        {
+            _source.Health -= _restore.Value;
+        }
+
+    }
 }
