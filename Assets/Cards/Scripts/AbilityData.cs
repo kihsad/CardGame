@@ -14,7 +14,7 @@ public class AbilityData : ScriptableObject
 
     public bool TryGetStat(StatType type, out Stat stat)
     {
-        stat = _stats.SingleOrDefault(stat => stat.Type == type);
+        stat = _stats.SingleOrDefault(s => s.Type == type);
         return stat.Equals(default(Stat));
     }
 }

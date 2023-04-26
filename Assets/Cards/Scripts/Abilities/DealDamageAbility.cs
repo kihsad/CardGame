@@ -3,9 +3,14 @@
     public class DealDamageAbility : Ability
     {
         private Stat _dealDamage;
-        public override void Apply(Card source, Card target, AbilityData data)
+        private AbilityData _data;
+        public DealDamageAbility(Stat dealDamage)
         {
-            data.TryGetStat(StatType.DealDamage, out _dealDamage);
+            _dealDamage = dealDamage;
+
+        }
+        public override void Apply(Card source, Card target)
+        {
             _target = target;
             _target.Health -= _dealDamage.Value;
         }
