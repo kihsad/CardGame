@@ -3,9 +3,12 @@
     public class GainAttackAbility : Ability
     {
         private Stat _gainAttack;
-        public override void Apply(Card source, Card target, AbilityData data)
+        public GainAttackAbility(Stat gainAttack)
         {
-            data.TryGetStat(StatType.GainAttack, out _gainAttack);
+            _gainAttack = gainAttack;
+        }
+        public override void Apply(Card source, Card target)
+        {
             _source = source;
             if (_source.Health<_source._health)
             {

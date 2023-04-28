@@ -3,9 +3,12 @@
     public class SimpleAttackAbility : Ability
     {
         private Stat _attack;
-        public override void Apply(Card source, Card target, AbilityData data)
+        public SimpleAttackAbility(Stat attack)
         {
-            data.TryGetStat(StatType.SimpleAttack, out _attack);
+            _attack = attack;
+        }
+        public override void Apply(Card source, Card target)
+        {
             _target = target;
             _target.Health -= _attack.Value;
         }

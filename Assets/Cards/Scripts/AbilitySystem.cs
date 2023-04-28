@@ -19,9 +19,17 @@ namespace Cards
         public Stat GetStat(StatType type) => _stats.SingleOrDefault(s => s.Type == type);
 
         private Dictionary<StatType, Ability> _abilities = new Dictionary<StatType, Ability>();
+
         private void Awake()
         {
             _abilities.Add(StatType.DealDamage, new DealDamageAbility(GetStat(StatType.DealDamage)));
+            _abilities.Add(StatType.BonusDamage, new BonusDamageAbility(GetStat(StatType.BonusDamage)));
+            _abilities.Add(StatType.DestroyWeapon, new DestroyWeaponAbility(GetStat(StatType.DestroyWeapon)));
+            _abilities.Add(StatType.GainAttack, new GainAttackAbility(GetStat(StatType.GainAttack)));
+            _abilities.Add(StatType.GiveMinionBonuses, new GiveMinionBonusesAbility(GetStat(StatType.GiveMinionBonuses)));
+            _abilities.Add(StatType.MurlocHaveBonusAttack, new MurlocBonusAttackAbility(GetStat(StatType.MurlocHaveBonusAttack)));
+            _abilities.Add(StatType.RestoreHealth, new RestoreAbility(GetStat(StatType.RestoreHealth)));
+            _abilities.Add(StatType.SimpleAttack, new SimpleAttackAbility(GetStat(StatType.SimpleAttack)));
         }
 
         public void ApplyAbilityByType(Card source, Card target, StatType type)

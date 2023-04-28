@@ -3,9 +3,13 @@
     public class DestroyWeaponAbility : Ability
     {
         private Stat _destroyWeapon;
-        public override void Apply(Card source, Card target, AbilityData data)
+        public DestroyWeaponAbility(Stat destroyWeapon)
         {
-            data.TryGetStat(StatType.DestroyWeapon, out _destroyWeapon);
+            _destroyWeapon = destroyWeapon;
+
+        }
+        public override void Apply(Card source, Card target)
+        {
             _target = target;
             _destroyWeapon.Value = _target._attack;
             _target._attack -= _destroyWeapon.Value;

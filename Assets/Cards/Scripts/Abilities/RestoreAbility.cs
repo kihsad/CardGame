@@ -3,10 +3,12 @@
     public class RestoreAbility : Ability
     {
         private Stat _restore;
-
-        public override void Apply(Card source, Card target, AbilityData data)
+        public RestoreAbility(Stat restore)
         {
-            data.TryGetStat(StatType.RestoreHealth, out _restore);
+            _restore = restore;
+        }
+        public override void Apply(Card source, Card target)
+        {
             _source = source;
             _source.Health += _restore.Value;
         }

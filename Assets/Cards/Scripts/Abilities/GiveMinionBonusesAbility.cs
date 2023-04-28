@@ -3,9 +3,12 @@
     public class GiveMinionBonusesAbility : Ability
     {
         private Stat _minionBonuses;
-        public override void Apply(Card source, Card target, AbilityData data)
+        public GiveMinionBonusesAbility(Stat minionBonuses)
         {
-            data.TryGetStat(StatType.GiveMinionBonuses, out _minionBonuses);
+            _minionBonuses = minionBonuses;
+        }
+        public override void Apply(Card source, Card target)
+        {
             _target = target;
             if (_target._typeText.Equals(CardUnitType.None))
             {

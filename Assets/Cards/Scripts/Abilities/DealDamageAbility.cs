@@ -3,7 +3,6 @@
     public class DealDamageAbility : Ability
     {
         private Stat _dealDamage;
-        private AbilityData _data;
         public DealDamageAbility(Stat dealDamage)
         {
             _dealDamage = dealDamage;

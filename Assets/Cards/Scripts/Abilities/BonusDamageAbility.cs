@@ -3,9 +3,13 @@
     public class BonusDamageAbility : Ability
     {
         private Stat _bonusDamage;
-        public override void Apply(Card source, Card target, AbilityData data)
+        public BonusDamageAbility(Stat bonusDamage)
         {
-            data.TryGetStat(StatType.BonusDamage, out _bonusDamage);
+            _bonusDamage = bonusDamage;
+
+        }
+        public override void Apply(Card source, Card target)
+        {
             _source = source;
             _source._attack += _bonusDamage.Value;
         }

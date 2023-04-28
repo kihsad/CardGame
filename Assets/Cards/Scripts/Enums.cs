@@ -37,15 +37,9 @@ namespace Cards
 		RestoreHealth = 2,
 		DestroyWeapon = 3,
 		BonusDamage = 4,
-		SummonMurloc = 5,
-		DrawCard = 6,
-		MinionsHaveBonusAttack = 7,
-		SummonBoar = 8,
-		GiveMinionBonuses = 9,
-		SummonMechanicalDragonling = 10,
-		GiveMinionsBonuses = 11,
-		GainAttack = 12,
-		SimpleAttack = 13
+		GiveMinionBonuses = 5,
+		GainAttack = 6,
+		SimpleAttack = 7
 	}
 
 	public enum PlayerType: byte

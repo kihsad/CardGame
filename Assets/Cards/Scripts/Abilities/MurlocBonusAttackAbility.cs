@@ -3,9 +3,12 @@
     public class MurlocBonusAttackAbility : Ability
     {
         private Stat _murlocAttack;
-        public override void Apply(Card source, Card target, AbilityData data)
+        public MurlocBonusAttackAbility(Stat murlocAttack)
         {
-            data.TryGetStat(StatType.MurlocHaveBonusAttack, out _murlocAttack);
+            _murlocAttack = murlocAttack;
+        }
+        public override void Apply(Card source, Card target)
+        {
             _target = target;
             if (_target._typeText.Equals(CardUnitType.Murloc))
             {
