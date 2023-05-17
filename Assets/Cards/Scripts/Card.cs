@@ -39,6 +39,7 @@ namespace Cards
         private Collider[] _tablePositions = new Collider[10];
 
         public Vector3 PositionInHand { get; set; }
+        public CardConfiguration CardConfiguration { get; private set; }
         [SerializeField]
         private LayerMask _tablePointLayer;
 
@@ -73,6 +74,7 @@ namespace Cards
 
         internal void Configuration(CardConfiguration configuration, Material mat, string description)
         {
+            CardConfiguration = configuration;
             _mesh.sharedMaterial = mat;
             _costText.text = configuration._cost.ToString();
             _nameText.text = configuration._name;
@@ -81,6 +83,8 @@ namespace Cards
             _healthText.text = (_health = configuration._health).ToString();
             _typeText.text = configuration._type == CardUnitType.None ? string.Empty : configuration._type.ToString();
         }
+
+        
 
         public void OnPointerEnter(PointerEventData eventData)
         {

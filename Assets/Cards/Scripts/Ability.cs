@@ -9,6 +9,8 @@ namespace Cards
 
         public abstract void Cancel();
 
+        public abstract void UpdateData(AbilityData data);
+
     }
 
 }
