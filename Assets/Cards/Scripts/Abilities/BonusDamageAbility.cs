@@ -12,6 +12,7 @@
         {
             _source = source;
             _source._attack += _bonusDamage.Value;
+
         }
 
         public override void Cancel()
@@ -19,5 +20,9 @@
             _source._attack -= _bonusDamage.Value;
         }
 
+        public override void UpdateData(AbilityData data)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

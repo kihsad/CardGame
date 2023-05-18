@@ -21,5 +21,9 @@
             _target._attack -= _murlocAttack.Value;
         }
 
+        public override void UpdateData(AbilityData data)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

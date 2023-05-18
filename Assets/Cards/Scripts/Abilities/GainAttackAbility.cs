@@ -21,5 +21,9 @@
             _source._attack -= _gainAttack.Value;
         }
 
+        public override void UpdateData(AbilityData data)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

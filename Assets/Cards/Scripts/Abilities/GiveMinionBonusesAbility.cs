@@ -21,5 +21,10 @@
             _target._attack -= _minionBonuses.Value;
             _target.Health -= _minionBonuses.Value;
         }
+
+        public override void UpdateData(AbilityData data)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

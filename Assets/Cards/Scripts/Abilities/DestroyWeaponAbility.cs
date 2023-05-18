@@ -19,5 +19,10 @@
         {
             _target._attack += _destroyWeapon.Value;
         }
+
+        public override void UpdateData(AbilityData data)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

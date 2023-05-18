@@ -17,5 +17,10 @@
         {
             _target.Health += _attack.Value;
         }
+
+        public override void UpdateData(AbilityData data)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -146,6 +146,7 @@ namespace Cards
                 }
             }
             transform.position = PositionInHand;
+
         }
 
         public void OnDrag(PointerEventData eventData)
