@@ -38,15 +38,20 @@ namespace Cards
         [SerializeField]
         private Collider[] _tablePositions = new Collider[10];
 
+
         public Vector3 PositionInHand { get; set; }
         public CardConfiguration CardConfiguration { get; private set; }
         [SerializeField]
         private LayerMask _tablePointLayer;
 
+        private Ability _ability;
+
         private void Start()
         {
+           
             _deck = FindObjectOfType<DeckManager>();
             _hand = FindObjectOfType<HandPlayer>();
+
         }
 
         public int Health
@@ -84,7 +89,11 @@ namespace Cards
             _typeText.text = configuration._type == CardUnitType.None ? string.Empty : configuration._type.ToString();
         }
 
-        
+        public void SetAbility(Ability ability)
+        {
+            _ability = ability;
+            //Debug.Log(ability);
+        }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
@@ -135,7 +144,7 @@ namespace Cards
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 100, _tablePositions); i++)
+            for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 50, _tablePositions); i++)
             {
                 Debug.Log(_tablePositions[i]);
                 if (_tablePositions[i].TryGetComponent(out DrawCard cardPoint) && cardPoint.IsEmpty)
@@ -144,10 +153,18 @@ namespace Cards
                     cardPoint.IsEmpty = false;
                     return;
                 }
+                if (_tablePositions[i].TryGetComponent(out Card card))
+                {
+                    _ability.Apply(this, card);
+                    return;
+                }
+
             }
             transform.position = PositionInHand;
 
         }
+        
+
 
         public void OnDrag(PointerEventData eventData)
         {
@@ -158,7 +175,7 @@ namespace Cards
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(transform.position, 100);
+            Gizmos.DrawSphere(transform.position, 50);
 
         }
     }

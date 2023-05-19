@@ -18,7 +18,7 @@ namespace Cards
 
         public Stat GetStat(StatType type) => _stats.SingleOrDefault(s => s.Type == type);
 
-        private Dictionary<StatType, Ability> _abilities = new Dictionary<StatType, Ability>();
+        public Dictionary<StatType, Ability> _abilities = new Dictionary<StatType, Ability>();
 
         private void Awake()
         {

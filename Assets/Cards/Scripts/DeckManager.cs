@@ -34,6 +34,9 @@ namespace Cards
         private CardConfiguration[] _allCardsPlayer1;
         [SerializeField]
         private CardConfiguration[] _allCardsPlayer2;
+        [SerializeField]
+        private AbilitySystem _abilitySystem;
+
 
 
         private void Awake()
@@ -51,13 +54,23 @@ namespace Cards
             _deckPlayer2 = CreateDeck(_deckPlayer2Parent, _allCardsPlayer2);
         }
 
+
         private Card[] CreateDeck(Transform parent, CardConfiguration[] allCards)
         {
+            foreach (var ability in _abilitySystem._abilities.Values)
+            {
+                Debug.Log($"{ability}");
+            }
             var deck = new Card[_maxCardInDeck];
             var offset = new Vector3();
             for (int i=0; i<_maxCardInDeck; i++)
             {
                 deck[i] = Instantiate(_prefabCard, parent);
+                int index = Random.Range(0, 7);
+                var type = (StatType)index;
+                _abilitySystem._abilities.TryGetValue(type, out var value);
+                //Debug.Log($"{_abilitySystem}+   {value}");
+                deck[i].SetAbility(value);
                 deck[i].transform.localPosition = offset;
                 offset += new Vector3(0f, 1f, 0f);
 
@@ -69,13 +82,15 @@ namespace Cards
             return deck;
         }
 
+
+
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                for(int i=_deckPlayer1.Length-1; i>=0; i--)
+                for (int i = _deckPlayer1.Length - 1; i >= 0; i--)
                 {
-                    if(_deckPlayer1[i]!=null)
+                    if (_deckPlayer1[i] != null)
                     {
                         _handPlayer1.SetNewCard(_deckPlayer1[i]);
                         _deckPlayer1[i] = null;
