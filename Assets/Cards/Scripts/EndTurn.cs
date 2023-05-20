@@ -8,8 +8,12 @@ namespace Cards
     {
         [SerializeField]
         private GameObject _axis;
+        private Card[] _cards;
+        private DeckManager _deckManager;
         public void EndTheTurn()
         {
+            _deckManager = FindObjectOfType<DeckManager>();
+            _cards = FindObjectsOfType<Card>();
             StartCoroutine(TurnTable());
         }
         public IEnumerator TurnTable()
@@ -25,8 +29,13 @@ namespace Cards
                 time += Time.deltaTime;
                 yield return null;
             }
-
-
+            foreach(Card card in _cards)
+            {
+                if (card.PositionInHand != null)
+                {
+                    _deckManager.CloseCards(card);
+                }
+            }
         }
     }
 }

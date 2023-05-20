@@ -11,8 +11,11 @@ namespace Cards
         [SerializeField]
         public Transform[] _positions;
 
+        private DeckManager _deckManager;
+
         private void Start()
         {
+            _deckManager = FindObjectOfType<DeckManager>();
             _cards = new Card[_positions.Length];
         }
 
@@ -36,6 +39,7 @@ namespace Cards
             _cards[index] = card;
             StartCoroutine(MoveInHand(card, _positions[index]));
 
+            //_deckManager.CloseCards(card);
             return true;
         }
         public IEnumerator MoveInHand(Card card, Transform position)

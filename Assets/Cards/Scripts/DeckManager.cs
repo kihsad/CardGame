@@ -5,6 +5,7 @@ using Cards.ScriptableObjects;
 
 namespace Cards
 {
+    public delegate void Notifier();
     public class DeckManager : MonoBehaviour
     {
         private Material _baseMat;
@@ -52,6 +53,7 @@ namespace Cards
         {
             _deckPlayer1 = CreateDeck(_deckPlayer1Parent, _allCardsPlayer1);
             _deckPlayer2 = CreateDeck(_deckPlayer2Parent, _allCardsPlayer2);
+
         }
 
 
@@ -82,7 +84,10 @@ namespace Cards
             return deck;
         }
 
-
+        public void CloseCards(Card card)
+        {
+            card.GetComponent<MeshRenderer>().material = _baseMat;
+        }
 
         private void Update()
         {
