@@ -50,6 +50,7 @@ namespace Cards
             while(time<1f)
             {
                 card.transform.position = Vector3.Lerp(startPos, endPos, time);
+                card.transform.rotation = position.rotation;
                 time += Time.deltaTime;
                 yield return null;
             }

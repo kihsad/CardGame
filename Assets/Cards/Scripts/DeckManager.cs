@@ -38,7 +38,7 @@ namespace Cards
         [SerializeField]
         private AbilitySystem _abilitySystem;
 
-
+        private GameManager _gameManager;
 
         private void Awake()
         {
@@ -51,6 +51,7 @@ namespace Cards
         }
         private void Start()
         {
+            _gameManager = FindObjectOfType<GameManager>();
             _deckPlayer1 = CreateDeck(_deckPlayer1Parent, _allCardsPlayer1);
             _deckPlayer2 = CreateDeck(_deckPlayer2Parent, _allCardsPlayer2);
 
@@ -91,15 +92,34 @@ namespace Cards
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+           
+            if (_gameManager.IsPlayer1Turn == false)
             {
-                for (int i = _deckPlayer1.Length - 1; i >= 0; i--)
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    if (_deckPlayer1[i] != null)
+                    for (int i = _deckPlayer2.Length - 1; i >= 0; i--)
                     {
-                        _handPlayer1.SetNewCard(_deckPlayer1[i]);
-                        _deckPlayer1[i] = null;
-                        break;
+                        if (_deckPlayer2[i] != null)
+                        {
+                            _handPlayer2.SetNewCard(_deckPlayer2[i]);
+                            _deckPlayer2[i] = null;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    for (int i = _deckPlayer1.Length - 1; i >= 0; i--)
+                    {
+                        if (_deckPlayer1[i] != null)
+                        {
+                            _handPlayer1.SetNewCard(_deckPlayer1[i]);
+                            _deckPlayer1[i] = null;
+                            break;
+                        }
                     }
                 }
             }
