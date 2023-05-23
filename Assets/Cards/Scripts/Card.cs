@@ -32,12 +32,18 @@ namespace Cards
 
         private DeckManager _deck;
         private HandPlayer _hand;
+        private Damager _damager;
 
         public static Card _card;
         private float _distance;
         [SerializeField]
         private Collider[] _tablePositions = new Collider[10];
 
+        private int _healthConf;
+        private int _attackConf;
+
+        private Health _healthH;
+        private Damager _attackD;
 
         public Vector3 PositionInHand { get; set; }
         public CardConfiguration CardConfiguration { get; private set; }
@@ -48,9 +54,20 @@ namespace Cards
 
         private void Start()
         {
-           
+            _damager = GetComponent<Damager>();
             _deck = FindObjectOfType<DeckManager>();
             _hand = FindObjectOfType<HandPlayer>();
+
+            _healthH = GetComponent<Health>();
+            _attackD = GetComponent<Damager>();
+
+            _healthConf = _card.CardConfiguration._health;
+            _attackConf = _card.CardConfiguration._attack;
+
+            _healthH.Value = _healthConf;
+            _attackD.Damage = _attackConf;
+            //_card.CardConfiguration._health = GetComponent<Health>().Value;
+            //_card.CardConfiguration._attack = GetComponent<Damager>().Damage;
 
         }
 
@@ -63,7 +80,7 @@ namespace Cards
                 _healthText.text = _health.ToString();
             }
         }
-       
+
         public CardStateType State { get; set; } = CardStateType.InDeck;
 
         public void Configuration(CardPropertiesData data, Material mat, string description)
@@ -146,7 +163,7 @@ namespace Cards
         {
             for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 50, _tablePositions); i++)
             {
-                Debug.Log(_tablePositions[i]);
+                //Debug.Log(_tablePositions[i]);
                 if (_tablePositions[i].TryGetComponent(out DrawCard cardPoint) && cardPoint.IsEmpty)
                 {
                     transform.position = cardPoint.transform.position + Vector3.up * 5;
@@ -155,6 +172,8 @@ namespace Cards
                 }
                 if (_tablePositions[i].TryGetComponent(out Card card))
                 {
+                    //Debug.Log("...");
+                    _damager.Attack();
                     _ability.Apply(this, card);
                     return;
                 }

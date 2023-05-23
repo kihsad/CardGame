@@ -1438,6 +1438,8 @@ GameObject:
   - component: {fileID: 1307249474124220041}
   - component: {fileID: 1307249474124220040}
   - component: {fileID: 3070830216814272007}
+  - component: {fileID: 14979489678156531}
+  - component: {fileID: 3468459093679782162}
   m_Layer: 8
   m_Name: CardPrefab
   m_TagString: Untagged
@@ -1533,6 +1535,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cad04fba56accf44aca4a9300c20932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 0
+  _attack: 0
   _frontCard: {fileID: 1307249474052391439}
   _mesh: {fileID: 1307249472203900899}
   _costText: {fileID: 1307249473836208755}
@@ -1541,7 +1545,45 @@ MonoBehaviour:
   _attackText: {fileID: 1307249473160749871}
   _healthText: {fileID: 1307249473871312366}
   _typeText: {fileID: 1307249472091281202}
-  _positions: []
+  _tablePositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _tablePointLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &14979489678156531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307249474124220039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3789f84bb501d8047b9f7acf19cc475a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackRange: 10
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &3468459093679782162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307249474124220039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d6bb51e6c4e374891e0c2e783bdc4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -62,7 +62,7 @@ namespace Cards
         {
             foreach (var ability in _abilitySystem._abilities.Values)
             {
-                Debug.Log($"{ability}");
+                //Debug.Log($"{ability}");
             }
             var deck = new Card[_maxCardInDeck];
             var offset = new Vector3();
