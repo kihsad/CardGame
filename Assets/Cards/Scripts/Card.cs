@@ -39,8 +39,6 @@ namespace Cards
         [SerializeField]
         private Collider[] _tablePositions = new Collider[10];
 
-        private int _healthConf;
-        private int _attackConf;
 
         private Health _healthH;
         private Damager _attackD;
@@ -58,14 +56,9 @@ namespace Cards
             _deck = FindObjectOfType<DeckManager>();
             _hand = FindObjectOfType<HandPlayer>();
 
-            _healthH = GetComponent<Health>();
-            _attackD = GetComponent<Damager>();
+            
 
-            _healthConf = _card.CardConfiguration._health;
-            _attackConf = _card.CardConfiguration._attack;
-
-            _healthH.Value = _healthConf;
-            _attackD.Damage = _attackConf;
+           
             //_card.CardConfiguration._health = GetComponent<Health>().Value;
             //_card.CardConfiguration._attack = GetComponent<Damager>().Damage;
 
@@ -96,6 +89,7 @@ namespace Cards
 
         internal void Configuration(CardConfiguration configuration, Material mat, string description)
         {
+            if (configuration == null) return;
             CardConfiguration = configuration;
             _mesh.sharedMaterial = mat;
             _costText.text = configuration._cost.ToString();
@@ -104,6 +98,10 @@ namespace Cards
             _attackText.text = configuration._attack.ToString();
             _healthText.text = (_health = configuration._health).ToString();
             _typeText.text = configuration._type == CardUnitType.None ? string.Empty : configuration._type.ToString();
+            _healthH = GetComponent<Health>();
+            _attackD = GetComponent<Damager>();
+            _healthH.Value = configuration._health;
+            _attackD.Damage = configuration._attack;
         }
 
         public void SetAbility(Ability ability)
@@ -161,7 +159,7 @@ namespace Cards
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 50, _tablePositions); i++)
+            for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 40, _tablePositions); i++)
             {
                 //Debug.Log(_tablePositions[i]);
                 if (_tablePositions[i].TryGetComponent(out DrawCard cardPoint) && cardPoint.IsEmpty)
@@ -172,15 +170,17 @@ namespace Cards
                 }
                 if (_tablePositions[i].TryGetComponent(out Card card))
                 {
-                    //Debug.Log("...");
+                    Debug.Log("...");
                     _damager.Attack();
                     _ability.Apply(this, card);
                     return;
                 }
-
+                State = CardStateType.OnTable;
+                Debug.Log("На столе");
             }
             transform.position = PositionInHand;
-            _card.State = CardStateType.OnTable;
+            
+            
         }
         
 
@@ -194,7 +194,7 @@ namespace Cards
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(transform.position, 50);
+            Gizmos.DrawSphere(transform.position, 40);
 
         }
     }

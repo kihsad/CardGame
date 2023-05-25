@@ -38,9 +38,11 @@ namespace Cards
             }
             foreach(Card card in _cards)
             {
+
                 //StartCoroutine(RotateCard(card));
                 if (card.State == CardStateType.OnTable)
                 {
+                    Debug.Log(card.State);
                     StartCoroutine(RotateCard(card));
                 }
 
@@ -65,6 +67,7 @@ namespace Cards
                 yield return null;
             }
             card.transform.eulerAngles = endPos;
+
         }
     }
 }
