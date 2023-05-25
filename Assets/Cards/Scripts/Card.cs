@@ -13,7 +13,7 @@ namespace Cards
         private const float _scale = 2f;
 
         [SerializeField]
-        private GameObject _frontCard;
+        public GameObject _frontCard;
         [SerializeField]
         private MeshRenderer _mesh;
 
@@ -180,7 +180,7 @@ namespace Cards
 
             }
             transform.position = PositionInHand;
-
+            _card.State = CardStateType.OnTable;
         }
         
 

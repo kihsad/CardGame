@@ -150,6 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da27d19fbb15c754fa9582323b377847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shirtMat: {fileID: 2100000, guid: a8b730bbb19e8ae4cb88f25622f21637, type: 2}
+  _shirtCard: {fileID: 0}
   _maxCardInDeck: 30
   _deckPlayer1Parent: {fileID: 796593745}
   _deckPlayer2Parent: {fileID: 133242850}
@@ -2976,6 +2978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da27d19fbb15c754fa9582323b377847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shirtMat: {fileID: 0}
+  _shirtCard: {fileID: 0}
   _maxCardInDeck: 30
   _deckPlayer1Parent: {fileID: 796593745}
   _deckPlayer2Parent: {fileID: 133242850}

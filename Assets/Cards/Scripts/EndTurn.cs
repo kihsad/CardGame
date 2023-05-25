@@ -11,11 +11,16 @@ namespace Cards
         private Card[] _cards;
         private DeckManager _deckManager;
         private GameManager _gameManager;
-        public void EndTheTurn()
+
+        private void Start()
         {
             _gameManager = FindObjectOfType<GameManager>();
             _deckManager = FindObjectOfType<DeckManager>();
             _cards = FindObjectsOfType<Card>();
+        }
+        public void EndTheTurn()
+        {
+            
             StartCoroutine(TurnTable());
         }
         public IEnumerator TurnTable()
@@ -33,10 +38,16 @@ namespace Cards
             }
             foreach(Card card in _cards)
             {
-                StartCoroutine(RotateCard(card));
+                //StartCoroutine(RotateCard(card));
+                if (card.State == CardStateType.OnTable)
+                {
+                    StartCoroutine(RotateCard(card));
+                }
+
                 if (card.State == CardStateType.InHand)
                 {
                     _deckManager.CloseCards(card);
+                    //StartCoroutine(RotateCard(card));
                 }
             }
             _gameManager.ChangeTurn();

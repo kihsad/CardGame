@@ -10,6 +10,11 @@ namespace Cards
     {
         private Material _baseMat;
 
+        [SerializeField]
+        private Material _shirtMat;
+        [SerializeField]
+        private GameObject _shirtCard;
+
         private Card[] _deckPlayer1;
         private Card[] _deckPlayer2;
 
@@ -87,10 +92,28 @@ namespace Cards
 
         public void CloseCards(Card card)
         {
-            card.GetComponent<MeshRenderer>().material = _baseMat;
+            //card.GetComponent<MeshRenderer>().material = _shirtMat;
+            //card._frontCard = _shirtCard;
+            //card.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            StartCoroutine(CloseCard(card));
+        }
+        public IEnumerator CloseCard(Card card)
+        {
+            var time = 0f;
+            var startPos = card.transform.eulerAngles;
+            var endPos = card.transform.eulerAngles + new Vector3(0f, 0f, 180f);
+            //var startPos = _axis.transform.eulerAngles;
+            //var endPos = _axis.transform.eulerAngles + new Vector3(startPos.x, startPos.y + 180f, startPos.z);
+            while (time < 1f)
+            {
+                card.transform.eulerAngles = Vector3.Lerp(startPos, endPos, time);
+                time += Time.deltaTime;
+                yield return null;
+            }
+            card.transform.eulerAngles = endPos;
         }
 
-        private void Update()
+            private void Update()
         {
            
             if (_gameManager.IsPlayer1Turn == false)
