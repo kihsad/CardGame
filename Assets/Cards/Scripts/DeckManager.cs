@@ -53,12 +53,13 @@ namespace Cards
 
             _baseMat = new Material(Shader.Find("TextMeshPro/Sprite"));
             _baseMat.renderQueue = 2995;
+            _deckPlayer1 = CreateDeck(_deckPlayer1Parent, _allCardsPlayer1);
+            _deckPlayer2 = CreateDeck(_deckPlayer2Parent, _allCardsPlayer2);
         }
         private void Start()
         {
             _gameManager = FindObjectOfType<GameManager>();
-            _deckPlayer1 = CreateDeck(_deckPlayer1Parent, _allCardsPlayer1);
-            _deckPlayer2 = CreateDeck(_deckPlayer2Parent, _allCardsPlayer2);
+            
 
         }
 

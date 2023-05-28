@@ -159,7 +159,7 @@ namespace Cards
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 40, _tablePositions); i++)
+            for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, 50, _tablePositions); i++)
             {
                 //Debug.Log(_tablePositions[i]);
                 if (_tablePositions[i].TryGetComponent(out DrawCard cardPoint) && cardPoint.IsEmpty)
@@ -194,7 +194,7 @@ namespace Cards
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(transform.position, 40);
+            Gizmos.DrawSphere(transform.position, 50);
 
         }
     }
