@@ -59,8 +59,6 @@ namespace Cards
         private void Start()
         {
             _gameManager = FindObjectOfType<GameManager>();
-            
-
         }
 
 
@@ -68,7 +66,7 @@ namespace Cards
         {
             foreach (var ability in _abilitySystem._abilities.Values)
             {
-                //Debug.Log($"{ability}");
+
             }
             var deck = new Card[_maxCardInDeck];
             var offset = new Vector3();
@@ -78,7 +76,6 @@ namespace Cards
                 int index = Random.Range(0, 7);
                 var type = (StatType)index;
                 _abilitySystem._abilities.TryGetValue(type, out var value);
-                //Debug.Log($"{_abilitySystem}+   {value}");
                 deck[i].SetAbility(value);
                 deck[i].transform.localPosition = offset;
                 offset += new Vector3(0f, 1f, 0f);
@@ -93,9 +90,6 @@ namespace Cards
 
         public void CloseCards(Card card)
         {
-            //card.GetComponent<MeshRenderer>().material = _shirtMat;
-            //card._frontCard = _shirtCard;
-            //card.transform.eulerAngles = new Vector3(0f, 0f, 0f);
             StartCoroutine(CloseCard(card));
         }
         public IEnumerator CloseCard(Card card)
@@ -103,8 +97,6 @@ namespace Cards
             var time = 0f;
             var startPos = card.transform.eulerAngles;
             var endPos = card.transform.eulerAngles + new Vector3(0f, 0f, 180f);
-            //var startPos = _axis.transform.eulerAngles;
-            //var endPos = _axis.transform.eulerAngles + new Vector3(startPos.x, startPos.y + 180f, startPos.z);
             while (time < 1f)
             {
                 card.transform.eulerAngles = Vector3.Lerp(startPos, endPos, time);

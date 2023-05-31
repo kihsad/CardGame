@@ -23,11 +23,6 @@ namespace Cards
             }
         }
 
-        //public void Restore()
-        //{
-        //    Value = 50;
-        //}
-
         public void TakeDamage(int damage)
         {
             Value -= damage;

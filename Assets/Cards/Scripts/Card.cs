@@ -55,13 +55,6 @@ namespace Cards
             _damager = GetComponent<Damager>();
             _deck = FindObjectOfType<DeckManager>();
             _hand = FindObjectOfType<HandPlayer>();
-
-            
-
-           
-            //_card.CardConfiguration._health = GetComponent<Health>().Value;
-            //_card.CardConfiguration._attack = GetComponent<Damager>().Damage;
-
         }
 
         public int Health
@@ -142,16 +135,6 @@ namespace Cards
             transform.eulerAngles = new Vector3(0f, 0f, 180f);
         }
 
-        //public void MoveToClosestPosition()
-        //{
-        //    for (int i = 0; i < Physics.OverlapSphereNonAlloc(transform.position, _distance, _positions); i++)
-        //    {
-        //        var _closest = _positions[0].ClosestPoint(transform.position);
-        //        _distance = Vector3.Distance(_card.transform.position, _positions[0].ClosestPoint(transform.position));
-        //        _card.transform.Translate(_closest);
-        //    }
-        //}
-
         public void OnBeginDrag(PointerEventData eventData)
         {
             _card = this;
@@ -183,8 +166,6 @@ namespace Cards
             
         }
         
-
-
         public void OnDrag(PointerEventData eventData)
         {
             Vector2 delta = eventData.delta;

@@ -38,8 +38,6 @@ namespace Cards
 
             _cards[index] = card;
             StartCoroutine(MoveInHand(card, _positions[index]));
-
-            //_deckManager.CloseCards(card);
             return true;
         }
         public IEnumerator MoveInHand(Card card, Transform position)

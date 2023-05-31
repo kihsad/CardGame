@@ -28,8 +28,6 @@ namespace Cards
             var time = 0f;
             var startPos = _axis.transform.eulerAngles;
             var endPos = _axis.transform.eulerAngles + new Vector3(0, 180, 0);
-            //var startPos = _axis.transform.eulerAngles;
-            //var endPos = _axis.transform.eulerAngles + new Vector3(startPos.x, startPos.y + 180f, startPos.z);
             while (time < 2f)
             {
                 _axis.transform.eulerAngles = Vector3.Lerp(startPos, endPos, time);
@@ -39,17 +37,11 @@ namespace Cards
             foreach(Card card in _cards)
             {
 
-                //StartCoroutine(RotateCard(card));
-                if (card.State == CardStateType.OnTable)
-                {
-                    Debug.Log(card.State);
-                    StartCoroutine(RotateCard(card));
-                }
+                StartCoroutine(RotateCard(card));
 
                 if (card.State == CardStateType.InHand)
                 {
                     _deckManager.CloseCards(card);
-                    //StartCoroutine(RotateCard(card));
                 }
             }
             _gameManager.ChangeTurn();
